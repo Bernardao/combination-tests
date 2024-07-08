@@ -5,7 +5,13 @@ export default defineNuxtConfig({
   future: { compatibilityVersion: 4 },
   // Nuxt Modules
   // https://nuxt.com/modules
-  modules: ["@nuxthub/core", "@nuxt/eslint", "@nuxt/ui"],
+  modules: [
+    "@nuxthub/core",
+    "@nuxt/eslint",
+    "@nuxt/ui",
+    "@nuxtjs/tailwindcss",
+    "@nuxt/image",
+  ],
   hub: {
     database: true,
     kv: true,
@@ -30,5 +36,8 @@ export default defineNuxtConfig({
   // srcDir: "src/",
   alias: {
     "@": "src/",
+  },
+  image: {
+    domains: ["mdbootstrap.com", "unsplash.com"],
   },
 });
