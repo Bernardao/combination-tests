@@ -31,12 +31,23 @@
     <a
       class="text-green-600 ml-2"
       target="_blank"
-      href="https://twitter.com/jacobandrewsky"
-      >@jacobandrewsky</a
+      href="https://twitter.com/doniago"
+      >@DonIago</a
     >
   </footer>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+if (import.meta.server) {
+  // if (import.meta.client) {
+  console.log(
+    "process.env.SHOPIFY_STOREFRONT_HOST",
+    process.env.SHOPIFY_STOREFRONT_HOST
+  );
+}
+if (import.meta.client) {
+  console.log("client");
+}
+</script>
 
 <style></style>

@@ -11,7 +11,11 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxtjs/tailwindcss",
     "@nuxt/image",
+    "@nuxtjs/apollo",
   ],
+  image: {
+    domains: ["mdbootstrap.com", "cdn.shopify.com", "unsplash.com"],
+  },
   hub: {
     database: true,
     kv: true,
@@ -37,7 +41,17 @@ export default defineNuxtConfig({
   alias: {
     "@": "src/",
   },
-  image: {
-    domains: ["mdbootstrap.com", "unsplash.com"],
+  apollo: {
+    clients: {
+      default: {
+        httpEndpoint: process.env.SHOPIFY_STOREFRONT_HOST || "",
+        httpLinkOptions: {
+          headers: {
+            "X-Shopify-Storefront-Access-Token":
+              process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || "",
+          },
+        },
+      },
+    },
   },
 });

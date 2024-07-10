@@ -9,7 +9,8 @@
     "deploy": "nuxthub deploy",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "prepare": "nuxt prepare"
   },
   "dependencies": {
     "@nuxt/eslint": "^0.3.13",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@nuxt/eslint-config": "^0.3.13",
     "@nuxt/image": "^1.7.0",
+    "@nuxtjs/apollo": "5.0.0-alpha.14",
     "@nuxtjs/tailwindcss": "^6.12.0",
     "eslint": "^9.5.0",
     "vue-tsc": "^2.0.22",
