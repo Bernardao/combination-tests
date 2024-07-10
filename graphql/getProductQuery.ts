@@ -1,4 +1,4 @@
-export const getProductsQuery = gql`
+export const getProductQuery = gql`
   query Product($handle: String!) {
     productByHandle(handle: $handle) {
       id

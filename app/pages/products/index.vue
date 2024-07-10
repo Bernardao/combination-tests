@@ -44,7 +44,6 @@
 
 <script lang="ts" setup>
 const { data: todos, refresh } = await useFetch("/api/todos");
-console.log("INDEX VUE TODOS", todos);
 const newTodo = ref("");
 
 async function submitTodo() {

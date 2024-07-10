@@ -10,7 +10,7 @@ export default eventHandler(async (event) => {
     .prepare("SELECT * FROM todos ORDER BY created_at DESC")
     .all();
 
-  console.log("event get TODOS", todos, event);
+  console.log("event get TODOS", event);
 
   return todos;
 });
