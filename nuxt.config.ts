@@ -37,9 +37,9 @@ export default defineNuxtConfig({
       },
     },
   },
-  // srcDir: "src/",
+  srcDir: "app/",
   alias: {
-    "@": "src/",
+    "@": "app/",
   },
   apollo: {
     clients: {

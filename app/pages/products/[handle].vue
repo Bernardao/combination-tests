@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getProductQuery } from "../../../graphql/getProductQuery.ts";
-import { getProductsQuery } from "../../../graphql/getProductsQuery.ts";
+import { getProductQuery } from "~/graphql/getProductQuery.ts";
+import { getProductsQuery } from "~/graphql/getProductsQuery.ts";
 const route = useRoute();
 const { data: product } = await useAsyncQuery(getProductQuery, {
   handle: route.params.handle,

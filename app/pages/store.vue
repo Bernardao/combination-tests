@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getProductsQuery } from "../../graphql/getProductsQuery";
+import { getProductsQuery } from "~/graphql/getProductsQuery";
 
 const variables = { first: 3 };
 const { data } = await useAsyncQuery(getProductsQuery, variables);
