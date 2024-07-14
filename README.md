@@ -1,4 +1,4 @@
-# NuxtHub Starter Template
+# Combination of diferent modules
 
 This starter lets you get started with [NuxtHub](https://hub.nuxt.com) in seconds.
 

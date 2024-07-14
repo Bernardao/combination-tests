@@ -1,5 +1,6 @@
 {
-  "name": "nuxthub-starter",
+  "name": "combination-projects",
+  "author": "Bernardao",
   "private": true,
   "type": "module",
   "scripts": {
