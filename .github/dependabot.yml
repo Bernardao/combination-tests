@@ -9,4 +9,5 @@ updates:
       - "version-update:semver-patch"
       - "version-update:semver-minor"
     ignore:
-      - dependency-name: "esbuild"  # si quieres ignorar la que daba error
+      - dependency-name: "tar-fs"
+      - dependency-name: "esbuild"
