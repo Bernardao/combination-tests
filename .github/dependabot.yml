@@ -4,7 +4,5 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 5
-    ignore:
-      - dependency-name: "tar-fs"
-      - dependency-name: "esbuild"
+    allow:
+      - dependency-type: "direct"
