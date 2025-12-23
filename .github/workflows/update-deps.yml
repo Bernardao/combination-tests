@@ -1,7 +1,7 @@
-name: Update dependencies
+name: Update direct dependencies
 
 on:
-  workflow_dispatch:        # Ejecutar manualmente desde GitHub
+  workflow_dispatch:
 
 jobs:
   update:
@@ -25,15 +25,16 @@ jobs:
           version: 9
           run_install: false
 
-      # 4️⃣ Instalar dependencias (genera pnpm-lock.yaml si no existe)
+      # 4️⃣ Instalar dependencias (genera lockfile si no existe)
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # 5️⃣ Actualizar dependencias directas a la última versión compatible
+      # 5️⃣ Actualizar dependencias directas explícitamente
       - name: Update direct dependencies
-        run: pnpm up --latest --filter-direct
+        run: |
+          pnpm up nuxt@~3.19.0 vite@~5.4.21 @nuxt/devtools@~2.6.5 cookie@^1.1.1
 
-      # 6️⃣ Commit y push del pnpm-lock.yaml y package.json actualizado
+      # 6️⃣ Commit y push de package.json y pnpm-lock.yaml
       - name: Commit changes
         run: |
           git config user.name "github-actions"
