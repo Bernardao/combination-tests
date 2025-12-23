@@ -11,14 +11,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Setup pnpm primero
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 9
           run_install: false
 
-      # Setup Node.js después (para cache)
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -28,16 +26,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      - name: Update dependencies
-        run: pnpm up nuxt@~3.19.0 vite@~5.4.21 @nuxt/devtools@~2.6.5 cookie@^0.8.0
-
-      - name: Reinstall dependencies
-        run: pnpm install --no-frozen-lockfile
+      # Regenerar lockfile automáticamente
+      - name: Update all dependencies
+        run: pnpm up --latest
 
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add package.json pnpm-lock.yaml
-          git commit -m "chore: update direct deps to fix security alerts" || echo "No changes to commit"
+          git commit -m "chore: regenerate pnpm lockfile" || echo "No changes to commit"
           git push
