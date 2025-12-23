@@ -8,34 +8,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Clonar repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Configurar Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # No activar cache en la primera ejecución si no hay pnpm-lock.yaml
-          # cache: pnpm  
+          # cache: pnpm  <-- mantener comentado para la primera ejecución
 
-      # 3️⃣ Configurar pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 9
           run_install: false
 
-      # 4️⃣ Instalar dependencias y generar pnpm-lock.yaml si no existe
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # 5️⃣ Actualizar todas las dependencias a la última versión
       - name: Update dependencies
         run: pnpm up --latest
 
-      # 6️⃣ Commit y push del lockfile y package.json actualizado
       - name: Commit changes
         run: |
           git config user.name "github-actions"
