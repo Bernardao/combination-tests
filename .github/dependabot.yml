@@ -1,12 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: "pnpm"
-    directory: "/"  # Raíz del repositorio
+    directory: "/"          # raíz del repo
     schedule:
-      interval: "weekly"
+      interval: "weekly"    # o "daily" si quieres revisiones más frecuentes
+    open-pull-requests-limit: 5
+    update-types:
+      - "version-update:semver-patch"
+      - "version-update:semver-minor"
     ignore:
-      - dependency-name: "vue-template-compiler"
-        versions:
-          - ">=3.0.0"  # Ignorar versiones incompatibles con Vue 3 / Nuxt 3
-    commit-message:
-      prefix: "chore(deps):"
+      - dependency-name: "esbuild"  # si quieres ignorar la que daba error
