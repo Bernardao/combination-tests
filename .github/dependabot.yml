@@ -1,8 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: "pnpm"
-    directory: "/"
+    directory: "/"          # La raíz de tu proyecto
     schedule:
-      interval: "weekly"
+      interval: "weekly"    # Cambia a "daily" si quieres
     allow:
-      - dependency-type: "direct"
+      - dependency-type: "direct"   # Solo dependencias directas
+    ignore:
+      - dependency-name: "tar-fs"   # Ignora dependencias transitivas problemáticas
+      - dependency-name: "esbuild"
