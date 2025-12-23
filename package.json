@@ -19,7 +19,8 @@
     "@nuxthub/core": "^0.7.0",
     "graphql-tag": "^2.12.6",
     "nuxt": "^3.19.0",
-    "tar-fs": ">=3.1.1"
+    "tar-fs": ">=3.1.1",
+    "esbuild": ">=0.25.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "^2.6.5",
@@ -39,7 +40,6 @@
     "path-to-regexp": ">=6.3.0",
     "undici": ">=5.29.0",
     "@babel/runtime": ">=7.26.10",
-    "esbuild": ">=0.25.0",
     "nanoid": ">=3.3.8",
     "brace-expansion": ">=1.1.12",
     "@vue/compiler-sfc": "^3.3.4"
