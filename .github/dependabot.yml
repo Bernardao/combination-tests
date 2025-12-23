@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: "pnpm"
+    directory: "/"  # Raíz del repositorio
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "vue-template-compiler"
+        versions:
+          - ">=3.0.0"  # Ignorar versiones incompatibles con Vue 3 / Nuxt 3
+    commit-message:
+      prefix: "chore(deps):"
