@@ -1,13 +1,10 @@
 version: 2
 updates:
   - package-ecosystem: "pnpm"
-    directory: "/"          # raíz del repo
+    directory: "/"
     schedule:
-      interval: "weekly"    # o "daily" si quieres revisiones más frecuentes
+      interval: "weekly"
     open-pull-requests-limit: 5
-    update-types:
-      - "version-update:semver-patch"
-      - "version-update:semver-minor"
     ignore:
       - dependency-name: "tar-fs"
       - dependency-name: "esbuild"
