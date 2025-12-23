@@ -1,38 +1,36 @@
-name: Update dependencies
+name: Generate pnpm-lock.yaml
 
 on:
   workflow_dispatch:
 
 jobs:
-  update:
+  generate-lockfile:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Clonar repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Configurar Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # cache: pnpm  <-- mantener comentado para la primera ejecución
 
+      # 3️⃣ Configurar pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
           version: 9
           run_install: false
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
-
-      - name: Update dependencies
-        run: pnpm up --latest
-
-      - name: Commit changes
+      # 4️⃣ Instalar dependencias y generar lockfile
+      - name: Install dependencies and generate lockfile
         run: |
+          pnpm install --no-frozen-lockfile
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add package.json pnpm-lock.yaml
-          git commit -m "chore: update dependencies and regenerate lockfile" || echo "No changes to commit"
+          git add pnpm-lock.yaml
+          git commit -m "chore: generate pnpm-lock.yaml" || echo "No changes to commit"
           git push
