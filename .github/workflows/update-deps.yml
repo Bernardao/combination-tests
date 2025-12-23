@@ -12,13 +12,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Configurar Node.js
+      # 2️⃣ Configurar Node.js sin cache
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # 3️⃣ Configurar pnpm
+      # 3️⃣ Configurar pnpm sin instalar automáticamente
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -26,9 +26,8 @@ jobs:
           run_install: false
 
       # 4️⃣ Instalar dependencias y generar lockfile
-      - name: Install dependencies and generate lockfile
-        run: |
-          pnpm install --no-frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
 
       # 5️⃣ Commit y push del lockfile generado
       - name: Commit lockfile
