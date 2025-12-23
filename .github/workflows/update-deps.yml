@@ -1,30 +1,19 @@
-name: Update dependencies
+- uses: pnpm/action-setup@v3
+  with:
+    version: 9
 
-on:
-  workflow_dispatch:
+- uses: actions/setup-node@v4
+  with:
+    node-version: 20
+    cache: pnpm
 
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+- run: pnpm install --no-frozen-lockfile
+- run: pnpm up nuxt@~3.16.0 vite@~5.4.17 @nuxt/devtools@~2.6.4
+- run: pnpm install --no-frozen-lockfile
 
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-
-      - run: pnpm install --no-frozen-lockfile
-      - run: pnpm up nuxt@~3.16.0 vite@~5.4.17 @nuxt/devtools@~2.6.4
-      - run: pnpm install --no-frozen-lockfile
-     
-      - run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add package.json pnpm-lock.yaml
-          git commit -m "chore: update deps to fix security alerts" || echo "No changes"
-          git push
+- run: |
+    git config user.name "github-actions"
+    git config user.email "github-actions@github.com"
+    git add package.json pnpm-lock.yaml
+    git commit -m "chore: update deps to fix security alerts" || echo "No changes"
+    git push
