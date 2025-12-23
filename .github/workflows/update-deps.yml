@@ -1,20 +1,41 @@
-- uses: pnpm/action-setup@v3
-  with:
-    version: 9
-    run_install: false
+name: Update dependencies
 
-- uses: actions/setup-node@v4
-  with:
-    node-version: 20
-    cache: pnpm
+on:
+  workflow_dispatch:
 
-- run: pnpm install --no-frozen-lockfile
-- run: pnpm up nuxt@~3.16.0 vite@~5.4.17 @nuxt/devtools@~2.6.4
-- run: pnpm install --no-frozen-lockfile
+jobs:
+  update:
+    runs-on: ubuntu-latest
 
-- run: |
-    git config user.name "github-actions"
-    git config user.email "github-actions@github.com"
-    git add package.json pnpm-lock.yaml
-    git commit -m "chore: update deps to fix security alerts" || echo "No changes"
-    git push
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Update vulnerable dependencies
+        run: pnpm up nuxt@~3.16.0 vite@~5.4.17 @nuxt/devtools@~2.6.4
+
+      - name: Reinstall dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add package.json pnpm-lock.yaml
+          git commit -m "chore: update deps to fix security alerts" || echo "No changes to commit"
+          git push
