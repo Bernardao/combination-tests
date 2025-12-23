@@ -19,7 +19,7 @@
     "@nuxthub/core": "^0.7.0",
     "graphql-tag": "^2.12.6",
     "nuxt": "^3.16.2",
-    "tar-fs": ">=3.1.1",
+    "tar-fs": ">=3.1.1"
   },
   "devDependencies": {
     "@nuxt/devtools": "^2.6.5",
