@@ -25,9 +25,9 @@ jobs:
           version: 9
           run_install: false
 
-      # 4️⃣ Instalar dependencias y generar pnpm-lock.yaml si no existe
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+      # 4️⃣ Forzar la creación del lockfile (si no existe)
+      - name: Generate pnpm lockfile
+        run: pnpm install --lockfile-only
 
       # 5️⃣ Actualizar todas las dependencias a la última versión
       - name: Update dependencies
